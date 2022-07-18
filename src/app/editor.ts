@@ -125,7 +125,37 @@ async function sendMessage(message) {
       }
     })
 }
-
+async function sendParser(message: string) {
+  await axios
+    .post(
+      'http://localhost:8020/parseMessage',
+      {
+        message: message,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+        },
+      },
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        console.log('success')
+        console.log(response.data)
+        // convert all the messages objects into strings and change the div with the id messages by the new messages
+        // convert the timestamp to a date
+        const messages = response.data
+          .map(function (message) {
+            return message.message
+          })
+          .join('<br>')
+        document.getElementById('parsed').innerHTML = messages
+      }
+    })
+}
 function timeConverter(UNIX_timestamp) {
   const a = new Date(UNIX_timestamp * 1000)
   // const months = [
