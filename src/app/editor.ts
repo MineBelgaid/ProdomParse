@@ -95,8 +95,8 @@ async function sendMessage(message) {
 
   await axios
     .post(
-      'https://prodomchat.herokuapp.com/addMessage',
-      // 'http://localhost:8020/addMessage',
+      // 'https://prodomchat.herokuapp.com/addMessage',
+      'http://localhost:8020/addMessage',
       {
         timestamp: time,
         message: message,
@@ -106,8 +106,8 @@ async function sendMessage(message) {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-					'Access-Control-Allow-Credentials': true,
-					'Access-Control-Allow-Origin': 'https://prodomchat.herokuapp.com/',
+          'Access-Control-Allow-Credentials': true,
+          'Access-Control-Allow-Origin': 'https://prodomchat.herokuapp.com/',
         },
       },
     )
@@ -130,8 +130,8 @@ async function sendMessage(message) {
 async function sendParser(message: string) {
   await axios
     .post(
-      'https://prodomchat.herokuapp.com/parseMessage',
-      // 'http://localhost:8020/parseMessage',
+      // 'https://prodomchat.herokuapp.com/parseMessage',
+      'http://localhost:8020/parseMessage',
       {
         message: message,
       },
@@ -149,14 +149,32 @@ async function sendParser(message: string) {
         console.log('success')
         console.log(response.data)
         // convert all the messages objects into strings and change the div with the id messages by the new messages
-        // convert the timestamp to a date
-        const Objects = JSON.stringify(response.data.objects)
+        const Actions = JSON.stringify(response.data.result[0])
 
-        const Persons = JSON.stringify(response.data.persons)
-        const Actions = JSON.stringify(response.data.actions)
-
-        document.getElementById('parsed').innerHTML =
-          Objects + '<br>' + Persons + '<br>' + Actions
+        document.getElementById('parsed').innerHTML = Actions
+      }
+    })
+}
+async function setCondition(message: string) {
+  await axios
+    .post(
+      // 'https://prodomchat.herokuapp.com/parseMessage',
+      'http://localhost:8020/addCondition',
+      {
+        message: message,
+      },
+      // {
+      //   withCredentials: true,
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': true,
+      //   },
+      // },
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        console.log('success')
       }
     })
 }

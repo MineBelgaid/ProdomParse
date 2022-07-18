@@ -126,6 +126,50 @@ const createBlogArticle = (
 
         dark,
       ),
+      Editor(
+        `{
+    					tag:'div',
+
+    children: [
+			{
+				tag: 'input',
+				// className: ['input'],
+				type: 'text',
+				name: 'condition',
+				placeholder: 'condition',
+
+			},
+			{
+				tag: 'button',
+				type:'submit',
+				// className: ['button'],
+				innerText: 'send',
+				onclick: () => {
+					// get message from input
+					const condition = document.querySelector('input[name="condition"]')
+					// send message
+					setCondition(condition.value)
+
+				}
+
+			},
+			{
+				tag:'br',
+			},
+			{
+				tag:'div',
+				className:['condition'],
+				id:'condition',
+
+			}
+			
+		],			
+}`,
+        'Condition',
+        'https://codepen.io/m3ftah/pen/PopdwaG',
+
+        dark,
+      ),
     ],
   }
   const padding = {
