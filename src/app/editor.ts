@@ -101,14 +101,15 @@ async function sendMessage(message) {
         timestamp: time,
         message: message,
       },
-      // {
-      //   withCredentials: true,
-      //   headers: {
-      //     Accept: 'application/json',
-      //     'Content-Type': 'application/json',
-      //     'Access-Control-Allow-Credentials': true,
-      //   },
-      // },
+      {
+        withCredentials: true,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+					'Access-Control-Allow-Credentials': true,
+					'Access-Control-Allow-Origin': '*',
+        },
+      },
     )
     .then((response) => {
       if (response.status === 200) {
