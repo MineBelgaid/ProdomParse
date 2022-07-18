@@ -101,14 +101,14 @@ async function sendMessage(message) {
         timestamp: time,
         message: message,
       },
-      {
-        withCredentials: true,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true,
-        },
-      },
+      // {
+      //   withCredentials: true,
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': true,
+      //   },
+      // },
     )
     .then((response) => {
       if (response.status === 200) {
@@ -134,14 +134,14 @@ async function sendParser(message: string) {
       {
         message: message,
       },
-      {
-        withCredentials: true,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true,
-        },
-      },
+      // {
+      //   withCredentials: true,
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': true,
+      //   },
+      // },
     )
     .then((response) => {
       if (response.status === 200) {
