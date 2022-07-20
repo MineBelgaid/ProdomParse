@@ -102,7 +102,7 @@ async function sendMessage(message) {
         message: message,
       },
       {
-        withCredentials: true,
+        // withCredentials: true,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
