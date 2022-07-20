@@ -95,8 +95,8 @@ async function sendMessage(message) {
 
   await axios
     .post(
-      // 'https://prodomchat.herokuapp.com/addMessage',
-      'http://localhost:8020/addMessage',
+      'https://prodomchat.herokuapp.com/addMessage',
+      // 'http://localhost:8020/addMessage',
       {
         timestamp: time,
         message: message,
@@ -130,8 +130,8 @@ async function sendMessage(message) {
 async function sendParser(message: string) {
   await axios
     .post(
-      // 'https://prodomchat.herokuapp.com/parseMessage',
-      'http://localhost:8020/parseMessage',
+      'https://prodomchat.herokuapp.com/parseMessage',
+      // 'http://localhost:8020/parseMessage',
       {
         message: message,
       },
@@ -149,9 +149,18 @@ async function sendParser(message: string) {
         console.log('success')
         console.log(response.data)
         // convert all the messages objects into strings and change the div with the id messages by the new messages
-        const Actions = JSON.stringify(response.data.result[0])
+        const actions = response.data.result
+        // convert the actions string to an array of actions
+        // const actions = JSON.parse(Actions)
+        let result = ''
+        for (const action of actions) {
+          console.log(action)
 
-        document.getElementById('parsed').innerHTML = Actions
+          result += action + ' '
+        }
+        console.log(result)
+
+        document.getElementById('parsed').innerHTML += '<br>' + result
       }
     })
 }

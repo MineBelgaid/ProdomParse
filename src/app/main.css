@@ -254,3 +254,8 @@ p.dark,
     background-color: #483EA8;
     color: #fff;
 }
+
+input[type=text].dark {
+    background-color: #483EA8;
+    color: #fff;
+}
