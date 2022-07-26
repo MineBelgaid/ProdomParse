@@ -119,8 +119,11 @@ async function sendMessage(message) {
         // convert the timestamp to a date
         const messages = response.data
           .map(function (message) {
-            const date = timeConverter(message.timestamp)
-            return date + ' : ' + message.message
+						const date = timeConverter(message.timestamp)
+						const user = message.sender
+            // format the string to be aligned
+						const messageString = `${date} ${user}: ${message.message}`
+            return messageString
           })
           .join('<br>')
         document.getElementById('messages').innerHTML = messages
@@ -130,8 +133,8 @@ async function sendMessage(message) {
 async function sendParser(message: string) {
   await axios
     .post(
-      'https://quiet-shelf-39279.herokuapp.com/https://prodomchat.herokuapp.com/parseMessage',
-      // 'http://localhost:8020/parseMessage',
+      // 'https://quiet-shelf-39279.herokuapp.com/https://prodomchat.herokuapp.com/parseMessage',
+      'http://localhost:8020/parseMessage',
       {
         message: message,
       },
