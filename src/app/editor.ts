@@ -119,10 +119,15 @@ async function sendMessage(message) {
         // convert the timestamp to a date
         const messages = response.data
           .map(function (message) {
-						const date = timeConverter(message.timestamp)
-						const user = message.sender
+            const date = timeConverter(message.timestamp)
+            const user = message.sender
             // format the string to be aligned
-						const messageString = `${date} ${user}: ${message.message}`
+            let messageString = ''
+            message.message.split('.').forEach((message) => {
+              messageString += `${date} ${user}: ${message}` + '<br>'
+            })
+            // remove the last <br>
+            messageString = messageString.slice(0, -4)
             return messageString
           })
           .join('<br>')
