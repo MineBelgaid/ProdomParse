@@ -135,66 +135,7 @@ async function sendMessage(message) {
       }
     })
 }
-async function sendParser(message: string) {
-  await axios
-    .post(
-      // 'https://quiet-shelf-39279.herokuapp.com/https://prodomchat.herokuapp.com/parseMessage',
-      'http://localhost:8020/parseMessage',
-      {
-        message: message,
-      },
-      // {
-      //   withCredentials: true,
-      //   headers: {
-      //     Accept: 'application/json',
-      //     'Content-Type': 'application/json',
-      //     'Access-Control-Allow-Credentials': true,
-      //   },
-      // },
-    )
-    .then((response) => {
-      if (response.status === 200) {
-        console.log('success')
-        console.log(response.data)
-        // convert all the messages objects into strings and change the div with the id messages by the new messages
-        const actions = response.data.result
-        // convert the actions string to an array of actions
-        // const actions = JSON.parse(Actions)
-        let result = ''
-        for (const action of actions) {
-          console.log(action)
 
-          result += action + ' '
-        }
-        console.log(result)
-
-        document.getElementById('parsed').innerHTML += '<br>' + result
-      }
-    })
-}
-async function setCondition(message: string) {
-  await axios
-    .post(
-      // 'https://prodomchat.herokuapp.com/parseMessage',
-      'http://localhost:8020/addCondition',
-      {
-        message: message,
-      },
-      // {
-      //   withCredentials: true,
-      //   headers: {
-      //     Accept: 'application/json',
-      //     'Content-Type': 'application/json',
-      //     'Access-Control-Allow-Credentials': true,
-      //   },
-      // },
-    )
-    .then((response) => {
-      if (response.status === 200) {
-        console.log('success')
-      }
-    })
-}
 function timeConverter(UNIX_timestamp) {
   const a = new Date(UNIX_timestamp * 1000)
   // const months = [
