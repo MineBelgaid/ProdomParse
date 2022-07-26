@@ -95,8 +95,8 @@ async function sendMessage(message) {
 
   await axios
     .post(
-      'https://quiet-shelf-39279.herokuapp.com/https://prodomchat.herokuapp.com/addMessage',
-      // 'http://localhost:8020/addMessage',
+      // 'https://quiet-shelf-39279.herokuapp.com/https://prodomchat.herokuapp.com/addMessage',
+      'http://localhost:8020/addMessage',
       {
         timestamp: time,
         message: message,

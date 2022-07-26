@@ -82,50 +82,7 @@ const createBlogArticle = (
 
         dark,
       ),
-      Editor(
-        `{
-    					tag:'div',
-
-    children: [
-			{
-				tag: 'input',
-				// className: ['input'],
-				type: 'text',
-				name: 'parse',
-				placeholder: 'parse',
-
-			},
-			{
-				tag: 'button',
-				type:'submit',
-				// className: ['button'],
-				innerText: 'send',
-				onclick: () => {
-					// get message from input
-					const parse = document.querySelector('input[name="parse"]')
-					// send message
-					sendParser(parse.value)
-
-				}
-
-			},
-			{
-				tag:'br',
-			},
-			{
-				tag:'div',
-				className:['parsed'],
-				id:'parsed',
-
-			}
-			
-		],			
-}`,
-        'Parser',
-        'https://codepen.io/m3ftah/pen/PopdwaG',
-
-        dark,
-      )
+      
     ],
   }
   const padding = {
